@@ -1,0 +1,13 @@
+	// 파일 하나 업로드
+	public String singleFileUpload(MultipartFile mf) {
+		String path = "C:\\spring\\upload\\";
+		String fileName = mf.getOriginalFilename();
+		fileName = UUID.randomUUID().toString().replace("-", "") + fileName;
+		File copy = new File(path+fileName);
+		try {
+			mf.transferTo(copy);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return fileName;
+	}
